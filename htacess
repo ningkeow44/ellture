@@ -8,14 +8,4 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
-# Redirect all HTTP to HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Redirect non-primary subdomains to main domain
-RewriteCond %{HTTP_HOST} !^nazharat\.fah\.uinjambi\.ac\.id$ [NC]
-RewriteRule ^(.*)$ https://nazharat.fah.uinjambi.ac.id/$1 [L,R=301]
-
-# Redirect specific path to root
-RewriteCond %{REQUEST_URI} ^/index\.php/nazharat/?$ [NC]
-RewriteRule ^index\.php/nazharat/?$ https://nazharat.fah.uinjambi.ac.id/ [L,R=301]
